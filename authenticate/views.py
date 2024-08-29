@@ -97,7 +97,7 @@ def signin(request):
             username = user.username  # Retrieve the username associated with the email
         except User.DoesNotExist:
             messages.error(request, "Bad Credentials!")
-            return redirect('signin')
+            return redirect('homepage')
 
         # Authenticate using the retrieved username
         user = authenticate(request, username=username, password=password)
@@ -105,7 +105,7 @@ def signin(request):
         if user is not None:
             login(request, user)
             fname = user.first_name
-            return render(request, "authenticate/index.html", {'fname': fname})
+            return render(request, "authenticate/homepage.html", {'fname': fname})
         else:
             messages.error(request, "Bad Credentials!")
             return redirect('signin')
@@ -140,4 +140,15 @@ def password_reset(request):
 
     return render(request, 'authenticate/password_reset.html')
 
+def homepage(requst):
+    return render(requst, 'authenticate/homepage.html')
+
+def profile(request):
+    return render(request, 'authenticate/profile.html')
+
+def dashboard(request):
+    return render(request, 'authenticate/dashboard.html')
+
+def help(request):
+    return render(request, 'authenticate/help.html')
 
