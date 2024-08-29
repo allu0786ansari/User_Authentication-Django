@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'authenticate',
 ]
 
 MIDDLEWARE = [
@@ -128,4 +129,12 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+MAILGUN_API_KEY = 'e62bc81064d53c7eeeb1116baeacbf3b-777a617d-0db6cbfa'
+MAILGUN_DOMAIN = 'sandbox26fcf1f05e2e4f1e9af7d66e3d6a5ae6.mailgun.org'
+EMAIL_HOST = 'smtp.mailgun.org'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'postmaster@sandbox26fcf1f05e2e4f1e9af7d66e3d6a5ae6.mailgun.org'
+EMAIL_HOST_PASSWORD = 'e62bc81064d53c7eeeb1116baeacbf3b-777a617d-0db6cbfa'
+DEFAULT_FROM_EMAIL = 'postmaster@sandbox26fcf1f05e2e4f1e9af7d66e3d6a5ae6.mailgun.org'

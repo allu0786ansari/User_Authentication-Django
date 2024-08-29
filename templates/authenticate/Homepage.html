@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <div class="navbar">
+            <a href="{% url 'homepage' %}">Home</a>
+            <a href="{% url 'profile' %}">Profile</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+        
+        <div class="container">
+            <div class="welcome-message">
+                Welcome, {{ user.username }}!
+            </div>
+            
+            <div class="section">
+                <h2>Your Financial Dashboard</h2>
+                <p>Here you can view your financial overview, recent transactions, and manage your budget.</p>
+                <a href="{% url 'dashboard' %}" class="btn">Go to Dashboard</a>
+            </div>
+            
+            <div class="section">
+                <h2>Account Settings</h2>
+                <p>Manage your account settings, update your profile, and change your password.</p>
+                <a href="{% url 'profile' %}" class="btn">Profile Settings</a>
+            </div>
+            
+            <div class="section">
+                <h2>Help & Support</h2>
+                <p>If you need help or support, you can contact us or visit our help center.</p>
+                <a href="{% url 'help' %}" class="btn">Help Center</a>
+            </div>
+        </div>
+        
+        <script src="" async defer></script>
+    </body>
+</html>
