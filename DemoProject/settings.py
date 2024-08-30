@@ -77,12 +77,8 @@ WSGI_APPLICATION = 'DemoProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'finance_assist',
-        'USER': 'root',
-        'PASSWORD': 'A6VLT@$cuDYA.4n',
-        'HOST':'127.0.0.1',
-        'PORT':'3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
