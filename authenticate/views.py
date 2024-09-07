@@ -4,7 +4,7 @@ from django.contrib import messages  # Import messages framework
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordResetForm
 from django.http import HttpResponse
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.views import PasswordResetView
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.decorators import login_required
@@ -15,6 +15,7 @@ from django.template import Context
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.utils.encoding import force_str, force_bytes
 from django.contrib.auth.tokens import default_token_generator
+
 
 def index(request):
     return render(request, "authenticate/index.html")
@@ -120,6 +121,7 @@ def logout_view(request):
 
 def password_reset(request):
     if request.method == 'POST':
+        email = request.POST.get('email')
         new_password = request.POST.get('new_password')
         confirm_password = request.POST.get('confirm_password')
 
@@ -127,16 +129,18 @@ def password_reset(request):
             messages.error(request, "Passwords do not match.")
             return render(request, 'authenticate/password_reset.html')
 
-        user = request.user
-        if user.is_authenticated:
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            messages.error(request, "No account found with that email address.")
+            return render(request, 'authenticate/password_reset.html')
+
+        if user:
             user.set_password(new_password)
             user.save()
             update_session_auth_hash(request, user)  # Keep user logged in after password change
             messages.success(request, "Your password has been reset successfully.")
-            return redirect('signin')  # Redirect to login 
-        else:
-            messages.error(request, "User not authenticated.")
-            return redirect('signin')  # Redirect to login 
+            return redirect('signin')  # Redirect to login
 
     return render(request, 'authenticate/password_reset.html')
 
