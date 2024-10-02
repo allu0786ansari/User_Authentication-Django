@@ -130,13 +130,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+# UPDATE IT ACCORDING TO YOUR MAILGUN REQUIREMENTS
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-MAILGUN_API_KEY = 'e62bc81064d53c7eeeb1116baeacbf3b-777a617d-0db6cbfa'
-MAILGUN_DOMAIN = 'sandbox26fcf1f05e2e4f1e9af7d66e3d6a5ae6.mailgun.org'
-EMAIL_HOST = 'smtp.mailgun.org'
+MAILGUN_API_KEY = ''
+MAILGUN_DOMAIN = ''
+EMAIL_HOST = ''
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'postmaster@sandbox26fcf1f05e2e4f1e9af7d66e3d6a5ae6.mailgun.org'
-EMAIL_HOST_PASSWORD = 'e62bc81064d53c7eeeb1116baeacbf3b-777a617d-0db6cbfa'
-DEFAULT_FROM_EMAIL = 'postmaster@sandbox26fcf1f05e2e4f1e9af7d66e3d6a5ae6.mailgun.org'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+DEFAULT_FROM_EMAIL = ''
