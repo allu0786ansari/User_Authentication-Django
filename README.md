@@ -11,3 +11,4 @@ Password Reset: Users can request to reset their password, which will trigger a 
 Secure Authentication: The system incorporates best practices in password management, such as hashed passwords and validation checks.
 MailGun: Used mailgun sandbox api to send email for verification.
 
+Demo project to learn about the user authentication in django as backend
